@@ -1,0 +1,11 @@
+				@font-face {
+					font-family: 'bilo-medium';
+					src: url('../fonts/3089Bilo-Medium.woff2') format('woff2'),
+						url('../fonts/3089Bilo-Medium.woff') format('woff');
+					font-display: auto;
+				}
+
+				.bilo-medium{font-family: 'bilo-medium' !important;}
+
+		
+/*This file was exported by "Export WP Page to Static HTML" plugin which created by ReCorp (https://myrecorp.com) */
