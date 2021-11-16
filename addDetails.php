@@ -25,7 +25,7 @@ if ($result->Result == '200-OK') {
     // header('Location: welcomePremiumMember.php');
 } else {
     $statusMsg = $result->Result . ", Detail: " . $result->ResultDetails;
-    $response['status'] = 1;
+    $response['status'] = 0;
     $response['msg'] = $statusMsg;
 }
 echo json_encode($response);

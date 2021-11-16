@@ -23,8 +23,8 @@ session_start();
 if (!isset($_SERVER['HTTP_REFERER'])) {
     header("location:javascript://history.go(-1)");
 } else {
-    $sql = "SELECT email FROM MyGuests";
-    $result = $conn->query($sql);
+    //$sql = "SELECT email FROM MyGuests";
+    //$result = $conn->query($sql);
     function BaseUrl()
     {
         $currentPath = $_SERVER['PHP_SELF'];
@@ -409,6 +409,11 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                             </span>
                         </div>
                     </div>
+                    <span class="login100-form-title p-b-37" style="font-size: 35px !important;">
+                        <div id="paymentResponse"></div>
+                        <b><?= $_SESSION['currency_sign'] . $_SESSION["currPrice"] ?> FOR THE YEAR</b>
+                    </span>
+                    <span>YOUR PAYMENT WILL AUTO-RENEW AT <?= $_SESSION['currency_sign'] . $_SESSION["currPrice"] ?> EACH YEAR YOU'LL BE REMINDED BEFORE THIS HAPPENS AND YOU CAN CANCEL ANYTIME.</span>
                     <div id="paypal-button-container"></div>
 
                     <!-- Include the PayPal JavaScript SDK -->
@@ -424,7 +429,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
            
             // Render the PayPal button into #paypal-button-container
             paypal.Buttons({
-
+                fundingSource: paypal.FUNDING.PAYPAL,
                 // Set up the transaction
                 createOrder: function(data, actions) {
                     return actions.order.create({
