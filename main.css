@@ -245,7 +245,7 @@ iframe {
     border-style: solid;
     border-width: 2px;
     float: left;
-    height: 680px;
+    /*height: 680px;*/
 }
 
 .login100-form {
