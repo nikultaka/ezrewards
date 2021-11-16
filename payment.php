@@ -390,7 +390,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 
 
         ?>
+
         <div>
+            <div id="loader"> </div>
             <div class="container-login100" style="background-color: white !important; margin-top:0 !important; min-height: 88vh !important;">
                 <div style="width:100%">
                     <span class="accountCreate100-form-title p-b-37">
@@ -424,9 +426,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         </div>
         <script src="https://www.paypal.com/sdk/js?client-id=AcS1rDqcqURwDJzNP0vnl_qMxqm5rixVvlf8PRdc_X4JCEgRIoy_FX25Si5ySQOlI_x_3OnIrcWsQ0Kz&currency=USD"></script>
         <!-- <script src="https://www.paypal.com/sdk/js?client-id=AcS1rDqcqURwDJzNP0vnl_qMxqm5rixVvlf8PRdc_X4JCEgRIoy_FX25Si5ySQOlI_x_3OnIrcWsQ0Kz&vault=true&intent="></script> -->
-        <!-- <script > var BASE_URL = <?php //echo BaseUrl() ?>; </script> -->
+        <!-- <script > var BASE_URL = <?php //echo BaseUrl() 
+                                        ?>; </script> -->
         <script>
-           
+            // $('#loader').addClass('loader');
             // Render the PayPal button into #paypal-button-container
             paypal.Buttons({
                 fundingSource: paypal.FUNDING.PAYPAL,
@@ -448,6 +451,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                         var transaction = orderData.purchase_units[0].payments.captures[0];
                         if (transaction.status == "COMPLETED") {
+                            $('#loader').addClass('loader');
                             $.ajax({
                                 url: '<?php echo  BaseUrl(); ?>addDetails.php',
                                 type: 'post',
@@ -456,9 +460,26 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                                 success: function(res) {
                                     var result = JSON.parse(res);
                                     if (result.status == 1) {
-                                        actions.redirect('https://bluelight.myezrewards.com/welcomePremiumMember.php')
-                                    }
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: result.msg,
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        actions.redirect('https://bluelight.myezrewards.com/welcomePremiumMember.php');
+                                        $('#loader').removeClass('loader');
 
+                                    } else {
+                                        $('#loader').removeClass('loader');
+
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: result.msg,
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+
+                                    }
                                 }
 
 
