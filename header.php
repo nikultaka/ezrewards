@@ -80,6 +80,22 @@
             color:white;
             padding-top:0px;
         }
+        .hader-wrapper a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 12px !important;
+            text-decoration: none;
+            font-size: 18px !important;
+            line-height: 25px !important;
+            border-radius: 4px !important;
+            font-family: "Bilo-Regular", Sans-serif !important;
+            font-size: 16px !important;
+            font-weight: bolder;
+            text-transform: uppercase !important;
+            color:white;
+            padding-top:0px !important;
+        }
         /* Float the link section to the right */
         .header-right {
             float: left;
@@ -311,7 +327,6 @@
         </a>
         <a href="#" class="nav-toggle-mobile" data-toggle="collapse" data-target="#mobile-toggle-class"><i class="fa fa-bars" aria-hidden="true"></i></a>
       </div>
-        <!-- <div class="nav-menu"> -->
          <div class="mobile-toggle collapse navbar-collapse" id="mobile-toggle-class">   
         
 				<div  id="content-desktop" class="ezbuts">
@@ -363,13 +378,21 @@
                 </div>
                 </div>
          </div>
-        <!-- </div> -->
-    <!-- <div class="user-btn"> -->
-       
-        <!-- </div> -->
     </div>
 </div>
+
+<?php 
+//echo '<pre>'; print_r($_SESSION); exit;
+?>
+
 <style>
+    <?php 
+    $pieces = parse_url($url);
+    $domain = isset($pieces['host']) ? $pieces['host'] : $pieces['path'];
+    if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+       return $regs['domain'];
+    }
+    ?>
     .header{
         display: none;
     }
@@ -467,7 +490,8 @@
     .new-header #content-desktop{
     flex-direction: column;
     position: absolute;
-    top: 67px;
+    /*top: 67px;*/
+    top: 37px;
     width: 100%;
     background: #fff;
     z-index: 2;
@@ -479,6 +503,12 @@
     }
     .new-header #content-desktop{
         justify-content: flex-start;
+    }
+    .hader-wrapper a {
+        padding: unset !important;
+    }
+    .new-header button {
+        margin: 5px !important;
     }
 }
 @media screen and (max-width: 800px){

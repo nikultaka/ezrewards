@@ -20,6 +20,15 @@
 		$_SESSION["WhiteLabelURL2"] = $partner['WhiteLabelURL2'];
 		$_SESSION["WhiteLabelURLLabel2"] = $partner['WhiteLabelURLLabel2'];
 
+        $_SESSION["WhiteLabel_HeaderColor"] = $partner['WhiteLabel_HeaderColor'];
+        $_SESSION["CustomFontName"] = $partner['CustomFontName'];
+        $_SESSION["CustomFontURL"] = $partner['CustomFontURL'];
+        $_SESSION["Menu_ButtonBackground"] = $partner['Menu_ButtonBackground'];
+        $_SESSION["Menu_TextColor"] = $partner['Menu_TextColor'];
+        $_SESSION["Menu_FontSize"] = $partner['Menu_FontSize'];
+
+        //echo '<pre>'; print_r($partner); exit;
+ 
 
 
         $_SESSION["currPrice"] = $partner['MemberChargePremium'];
