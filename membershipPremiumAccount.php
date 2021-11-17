@@ -47,14 +47,14 @@
                                     <input type="hidden" name="country" value="USA"/>
                                 <?php } ?>
                         </div>
-                        <div id="user_name_div" class="validate-input m-b-30 base-input base-input--with-margin">
+                        <!-- <div id="user_name_div" class="validate-input m-b-30 base-input base-input--with-margin">
                             <select id="payment_type" name="payment_type" class="country-select" required>
                                 <option value=""disabled selected>PAY WITH*</option>
                                 <option value="paypal">PayPal</option>
                                 <option value="stripe">Stripe</option>
                             </select>
                          
-                        </div>
+                        </div> -->
                         
                         <?php if($_SESSION["Member"] == "DirectMember"){ ?>
                             <div id="user_name_div" class="wrap-inputAccountCreate100 validate-input m-b-30 base-input base-input--with-margin">

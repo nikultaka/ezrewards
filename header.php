@@ -1,4 +1,8 @@
 <?php
+session_start();
+// echo '<pre>';
+// print_r($_SESSION);
+// die;
  require "config.php";
   ?>
 <!DOCTYPE html>
@@ -61,6 +65,17 @@
             
             background-color: <?= $_SESSION['Reward_PrimaryColor'] ?>;
             height:100px;
+        }
+        @font-face {
+        font-family: <?php echo $_SESSION['CustomFontName'] ? $_SESSION['CustomFontName']:"" ?>;
+        src: url(<?php echo $_SESSION['CustomFontURL'] ? $_SESSION['CustomFontURL']:"" ?>)
+        }
+        .cus_btn{
+            color: <?php echo $_SESSION['Menu_TextColor'] ? $_SESSION['Menu_TextColor']:"" ?> !important;
+            background-color: <?php echo $_SESSION['Menu_ButtonBackground'] ? $_SESSION['Menu_ButtonBackground']:"" ?> !important;
+            font-size: <?php echo $_SESSION['Menu_FontSize'] ? $_SESSION['Menu_FontSize']:"" ?> !important;
+            font-family: <?php echo $_SESSION['CustomFontName'] ? $_SESSION['CustomFontName']:"" ?> !important;
+            
         }
 
         /* Style the header links */
@@ -314,7 +329,7 @@
 
 
     
-<div class="hader-wrapper">
+<div class="hader-wrapper" style="background-color:<?php echo $_SESSION['WhiteLabel_HeaderColor'] ? $_SESSION['WhiteLabel_HeaderColor']:"" ?>">
     <div class="new-header">
         <div class="logo-col">
         <a class="logo" href="./">
@@ -338,14 +353,14 @@
                     <?php } ?>    
                 <div class="user-btn">
                 <a  class="nav-link" href="index.php" style="margin-left:75px;">
-                    <button type="button" class="btn btn-primary TopLogin">Login</button>
+                    <button type="button" class="btn btn-primary TopLogin cus_btn">Login</button>
                 </a>
 				<?php
             if($_SESSION["Member"] == "DirectMember"){ ?>
                 &nbsp;
                 <?php } else if($_SESSION["Member"] != "DirectMember" && $_SESSION["WhiteLabel_ShowJoinNow"] == 1){ ?>
                     <a class="nav-link" href="signup_membership.php" >
-                    <button type="button" class="btn btn-primary TopBTN">Join Now</button>
+                    <button type="button" class="btn btn-primary TopBTN cus_btn" >Join Now</button>
                 </a>
                 <?php } ?> 
 				
@@ -354,7 +369,7 @@
                 &nbsp;
                 <?php } else if($_SESSION["Member"] != "DirectMember" && $_SESSION["WhiteLabel_ShowJoinNow"] == 1){ ?>
                     <a class="nav-link" href="info.php" >
-                    <button type="button" class="btn btn-primary TopBTN">More Info</button>
+                    <button type="button" class="btn btn-primary TopBTN cus_btn">More Info</button>
                 </a>
                 <?php } ?>
 				<?php
@@ -364,7 +379,7 @@
                 </a>
                 <?php } else if($_SESSION["Member"] != "DirectMember" && isset($_SESSION["WhiteLabelURLLabel"])){ ?>
                     <a class="nav-link" href="<?= $_SESSION["WhiteLabelURL"] ?>" target="_blank" >
-                    <button type="button" class="btn btn-primary TopBTN"><?= $_SESSION["WhiteLabelURLLabel"] ?></button>
+                    <button type="button" class="btn btn-primary TopBTN cus_btn" ><?= $_SESSION["WhiteLabelURLLabel"] ?></button>
                 </a>
                 <?php } ?> 
 				<?php
@@ -372,7 +387,7 @@
                 &nbsp;
                 <?php } else if($_SESSION["Member"] != "DirectMember" && isset($_SESSION["WhiteLabelURLLabel"])){ ?>
                     <a class="nav-link" href="<?= $_SESSION["WhiteLabelURL2"] ?>" target="_blank" >
-                    <button type="button" class="btn btn-primary TopBTN"><?= $_SESSION["WhiteLabelURLLabel2"] ?></button>
+                    <button type="button" class="btn btn-primary TopBTN cus_btn"><?= $_SESSION["WhiteLabelURLLabel2"] ?></button>
                 </a>
                 <?php } ?> 
                 </div>

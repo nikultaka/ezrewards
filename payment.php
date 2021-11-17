@@ -20,6 +20,9 @@
 </style>
 <?php
 session_start();
+// echo '<pre>';
+// print_r($_SESSION);
+// die;
 if (!isset($_SERVER['HTTP_REFERER'])) {
     header("location:javascript://history.go(-1)");
 } else {
@@ -55,7 +58,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         }
         $_SESSION["dis_price"] = "";
     }
-    if (isset($_POST['payment_type']) && $_POST['payment_type'] == "stripe") {
+    // $stripe = "stripe";
+    // $paypal = "paypal";
+    if (isset($_SESSION['WhiteLabel_PaymentMethod']) && strtoupper($_SESSION['WhiteLabel_PaymentMethod']) == strtoupper("stripe")) {
 
         if (isset($_POST['coupon_discount']) && !empty($_POST['coupon_discount'])) {
             $coupon_discount = get_coupon_discount($conn, $_POST['coupon_discount']);
