@@ -21,7 +21,7 @@
 <?php
 session_start();
 // echo '<pre>';
-// print_r($_SESSION);
+// print_r($_SESSION["currency"]);
 // die;
 if (!isset($_SERVER['HTTP_REFERER'])) {
     header("location:javascript://history.go(-1)");
@@ -429,11 +429,16 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 </div>
             </div>
         </div>
-        <script src="https://www.paypal.com/sdk/js?client-id=AcS1rDqcqURwDJzNP0vnl_qMxqm5rixVvlf8PRdc_X4JCEgRIoy_FX25Si5ySQOlI_x_3OnIrcWsQ0Kz&currency=USD"></script>
+        <script>
+         var currency = "<?php echo $_SESSION["currency"] ?>"
+         </script>
+        
+        <script src="https://www.paypal.com/sdk/js?client-id=AcS1rDqcqURwDJzNP0vnl_qMxqm5rixVvlf8PRdc_X4JCEgRIoy_FX25Si5ySQOlI_x_3OnIrcWsQ0Kz&currency=<?php echo $_SESSION["currency"] ?>"></script>
         <!-- <script src="https://www.paypal.com/sdk/js?client-id=AcS1rDqcqURwDJzNP0vnl_qMxqm5rixVvlf8PRdc_X4JCEgRIoy_FX25Si5ySQOlI_x_3OnIrcWsQ0Kz&vault=true&intent="></script> -->
         <!-- <script > var BASE_URL = <?php //echo BaseUrl() 
                                         ?>; </script> -->
         <script>
+            // console.log("currency is "+currency)
             // $('#loader').addClass('loader');
             // Render the PayPal button into #paypal-button-container
             paypal.Buttons({
@@ -443,7 +448,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: '5.0'
+                                value:<?php echo $_SESSION["currPrice"] ?>
                             }
                         }]
                     });
