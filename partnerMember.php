@@ -26,6 +26,7 @@
         $_SESSION["Menu_ButtonBackground"] = $partner['Menu_ButtonBackground'];
         $_SESSION["Menu_TextColor"] = $partner['Menu_TextColor'];
         $_SESSION["Menu_FontSize"] = $partner['Menu_FontSize'];
+        $_SESSION["WhiteLabel_PaymentMethod"] = $partner['WhiteLabel_PaymentMethod'];
 
         //echo '<pre>'; print_r($partner); exit;
  
